@@ -17,29 +17,26 @@ print('Magnetometer (uTesla): ({0:0.3f},{1:0.3f},{2:0.3f})'.format(*fxos.magneto
 print('Gyroscope (radians/s): ({0:0.3f},{1:0.3f},{2:0.3f})'.format(*fxas.gyroscope))
 '''
 
-madgwick = ahrs.filters.Madgwick()
+madgwick = ahrs.filters.Madgwick(frequency=10.0)
 
 Q = [1., 0., 0., 0.]
 
 time_passed = 0
 d2g = ahrs.common.DEG2RAD
 
+counter = 0
+
 while True:
     start_time = time.time()
-
     gyroscope_radians = [g * d2g for g in fxas.gyroscope]
-    madgwick.Dt = time_passed
-    Q = madgwick.updateMARG(Q, gyroscope_radians, fxos.accelerometer, fxos.magnetometer)    
+    
+    Q = madgwick.updateMARG(Q, gyroscope_radians, fxos.accelerometer, fxos.magnetometer)
 
-    time.sleep(1)
-    end_time = time.time()
-
-    time_passed = end_time - start_time
     
     DCM = Quaternion(Q).to_DCM()
     angles = Quaternion(Q).to_angles()
-
-    print(angles)
-    #print("time passed: " + str(time_passed))
-
-
+    
+    if(counter % 5 == 0):
+        print("x: " + str(angles[0]) + ", y: " + str(angles[1]) + ", z: " + str(angles[2]))
+    counter += 1
+    time.sleep(0.1 - (time.time() - start_time))
