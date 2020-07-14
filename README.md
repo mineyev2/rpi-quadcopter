@@ -2,7 +2,7 @@
 Quadcopter completely controlled by a raspberry pi
 
 
-#Installation
+# Installation
 ```console
 foo@bar:~$ pip install ahrs
 ```
