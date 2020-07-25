@@ -18,3 +18,5 @@ If using mac, need to download this driver: https://github.com/360Controller/360
 
 # Code
 can make a diagram of how the things work or something
+
+for pygame, use conda venv if running code on PyCharm
