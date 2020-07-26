@@ -24,7 +24,7 @@ if __name__ == "__main__":
     connected_list = []
     # used to be 4096
     buffer = 4096
-    port = 8888
+    port = 1337
 
     server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
