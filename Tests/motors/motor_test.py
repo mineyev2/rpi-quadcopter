@@ -12,10 +12,11 @@ pi.set_servo_pulsewidth(27, 1000)
 time.sleep(3)
 #pi.set_servo_pulsewidth(27, 2000)
 #time.sleep(3)
-pi.set_servo_pulsewidth(27, 1200)
-print("set to: ",pi.get_servo_pulsewidth(27))
 
-time.sleep(5)
+for i in range(0, 5):
+    pi.set_servo_pulsewidth(27, (1000 + i * 100))
+    print("set to: ",pi.get_servo_pulsewidth(27))
+    time.sleep(1)
 #pi.stop()
 
 pi.set_servo_pulsewidth(27, 0)
