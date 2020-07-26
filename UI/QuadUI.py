@@ -1,7 +1,6 @@
 import pygame
 
 class QuadUI:
-    @staticmethod
     def run():
         background_colour = (255,255,255)
         (width, height) = (300, 200)
