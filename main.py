@@ -1,8 +1,15 @@
-# some_file.py
+from threading import Thread
+
+# add folders to path
 import sys
-# insert at 1, 0 is the script path (or '' in REPL)
 sys.path.insert(1, sys.path[0]+'/UI')
+sys.path.insert(1, sys.path[0]+'/python_video_stream')
 
 from UI import QuadUI
+from server_prototype import run
 
-QuadUI.run()
+ui = Thread(target = QuadUI.run())
+server = Thread(target = run())
+
+ui.start()
+server.start()
