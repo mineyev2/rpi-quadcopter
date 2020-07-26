@@ -15,7 +15,7 @@ def main():
     else:
         host = sys.argv[1]
 
-    port = 11000
+    port = 8888
 
     # asks for user name
     name = input("\33[34m\33[1m CREATING NEW ID:\n Enter username: \33[0m")
