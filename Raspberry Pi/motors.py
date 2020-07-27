@@ -11,7 +11,7 @@ class Motors:
         for i in self.motor_gpios:
             self.pi.set_mode(i, pigpio.OUTPUT)
 
-    def initialize_motors(self):
+    def initialize(self):
         for i in self.motor_gpios:
             self.pi.set_servo_pulsewidth(i, 0)
         time.sleep(3)
@@ -19,6 +19,8 @@ class Motors:
         for i in self.motor_gpios:
             self.pi.set_servo_pulsewidth(i, 1000)
         time.sleep(3)
+        for i in self.motor_gpios:
+            self.pi.set_servo_pulsewidth(i, 0)
         print("Motors initialized!")
 
         #listen for beeping to guarantee that the ESCs have initialized

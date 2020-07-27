@@ -16,7 +16,7 @@ if __name__ == "__main__":
         if(server.client_msg == b'1000'):
             initialized = True
 
-    print("Initialized!")
+    motors.initialize()
 
     previous_msg = b''
     while True:
