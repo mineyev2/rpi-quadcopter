@@ -4,7 +4,7 @@ import pygame
 
 def message_to_motor_speeds(msg):
     speeds = []
-    if(len(msg) != 4):
+    if(len(msg) != 3):
         return
     for i in msg:
         if(i ==49):
