@@ -36,10 +36,10 @@ if __name__ == "__main__":
         A = buttons[11]
         B = buttons[12]
         X = buttons[13]
-        Y = buttons[14]
+        #Y = buttons[14]
 
         to_send = b''
-        for i in range(4):
+        for i in range(3):
             to_send += str(buttons[11 + i]).encode('utf-8')
         #print(to_send)
         client.send_msg(to_send)

@@ -25,7 +25,7 @@ if __name__ == "__main__":
     #now here, decipher whatever the client sends so that the pi can run the motors
     initialized = False
     while not initialized:
-        if(server.client_msg == b'1000'):
+        if(server.client_msg == b'100'):
             initialized = True
 
     motors.initialize()
