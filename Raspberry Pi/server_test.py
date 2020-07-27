@@ -32,7 +32,9 @@ print('Got connection from', addr)
 c.send(b'Thank you for connecting')
 
 while True:
-    print(c.recv(1024))
+    client_text = c.recv(1024)
+    if(client_text != b''):
+        print(client_text)
 
 # Close the connection with the client
 c.close()
