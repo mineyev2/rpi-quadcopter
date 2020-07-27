@@ -24,8 +24,22 @@ class Motors:
         #listen for beeping to guarantee that the ESCs have initialized
 
     def set_motor_speeds(self, speeds):
+        '''
+        function to set speeds of each motor
+
+        :param speeds: array of speeds, element values range from 0-100 (to symbolize percentages)
+        :return: nothing
+        '''
+
         #speeds list must be the same size as the number of motors
         assert(len(speeds) == self.num_motors)
+
+        for i in range(self.num_motors):
+            #convert from percentage to signal PWM
+            # 1000 is min thrust, 2000 is max thrust
+            pulse_width = 1000 + speeds[i] * 10
+            self.pi.set_servo_pulsewidth(self.motor_gpios[i], pulse_width)
+
 
     def turn_motors_off(self):
         for i in self.motor_gpios:
