@@ -12,6 +12,7 @@ class Motors:
             self.pi.set_mode(i, pigpio.OUTPUT)
 
     def initialize(self):
+        print("Initializing motors...")
         for i in self.motor_gpios:
             self.pi.set_servo_pulsewidth(i, 0)
         time.sleep(3)

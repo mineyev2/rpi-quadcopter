@@ -2,6 +2,18 @@ from server_test import Server
 from motors import Motors
 import pygame
 
+def message_to_motor_speeds(msg):
+    speeds = []
+    if(len(msg) != 4):
+        return
+    for i in msg:
+        if(i ==49):
+            speeds.append(1)
+        else:
+            speeds.append(0)
+    print(speeds)
+    return speeds
+
 if __name__ == "__main__":
     server = Server()
     motors = Motors()
