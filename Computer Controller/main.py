@@ -45,5 +45,5 @@ if __name__ == "__main__":
         print(to_send)
         client.send_msg(to_send)
 
-        clock.tick(60)
+        clock.tick(30)
 

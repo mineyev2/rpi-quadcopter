@@ -33,6 +33,8 @@ class Server:
         listen_thread.start()
 
     def listen(self):
+
+        #change this later so that the messages aren't combined (specify message size)
         print("Socket is now waiting for message")
         while True:
             client_text = self.c.recv(1024)
