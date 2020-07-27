@@ -38,7 +38,7 @@ if __name__ == "__main__":
 
     while 1:
         # Get the list sockets which are ready to be read through select
-        rList, wList, error_sockets = select.select(connected_list, [], [])
+        rList, wList, error_sockets = select.select(connected_list, [], [])s
 
         for sock in rList:
             # New connection
