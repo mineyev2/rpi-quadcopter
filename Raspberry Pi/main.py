@@ -35,7 +35,7 @@ if __name__ == "__main__":
         client_msg = server.client_msg
         if(previous_msg != client_msg):
             speeds = message_to_motor_speeds(client_msg)
-            if(len(speeds) == 3):
+            if(speeds):
                 motors.set_motor_speeds(speeds)
             previous_msg = client_msg
 
