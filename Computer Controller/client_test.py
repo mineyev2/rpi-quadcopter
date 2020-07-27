@@ -13,4 +13,10 @@ s.connect(('192.168.1.159', port))
 # receive data from the server
 print(s.recv(1024))
 # close the connection
+
+s.send(b'Hello')
+
+#while True:
+    #s.send(b'Hello')
+
 s.close()
