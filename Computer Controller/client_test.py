@@ -5,7 +5,7 @@ import socket
 s = socket.socket()
 
 # Define the port on which you want to connect
-port = 12345
+port = 12346
 
 # connect to the server on local computer
 s.connect(('192.168.1.159', port))
