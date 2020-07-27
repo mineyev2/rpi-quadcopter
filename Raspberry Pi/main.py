@@ -34,7 +34,9 @@ if __name__ == "__main__":
     while True:
         client_msg = server.client_msg
         if(previous_msg != client_msg):
+            speeds = message_to_motor_speeds(client_msg)
             previous_msg = client_msg
+
 
 
 
