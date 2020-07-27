@@ -31,5 +31,8 @@ print('Got connection from', addr)
 # send a thank you message to the client.
 c.send(b'Thank you for connecting')
 
+while True:
+    print(c.recv(1024))
+
 # Close the connection with the client
 c.close()
