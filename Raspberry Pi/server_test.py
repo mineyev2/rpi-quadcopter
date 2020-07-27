@@ -1,6 +1,48 @@
 # first of all import the socket library
 import socket
+import threading
 
+class Server:
+    def __init__(self, name="rpi-quadcopter", ip='192.168.159'):
+        self.name = name
+        self.ip = ip
+        self.port = 12346
+        self.s = socket.socket()
+        self.client_msg = b''
+
+    def start_server(self):
+        # Next bind to the port
+        # we have not typed any ip in the ip field
+        # instead we have inputted an empty string
+        # this makes the server listen to requests
+        # coming from other computers on the network
+        self.s.bind(('', self.port))
+        print("socket binded to %s" % (self.port))
+
+        # put the socket into listening mode
+        self.s.listen(1)
+        print("socket is listening")
+
+    def accept_connections(self):
+        self.c, self.addr = self.s.accept()
+        print('Got connection from', self.addr)
+
+    def listen_in_parallel(self):
+        print("test")
+        listen_thread = threading.Thread(target=self.listen)
+        listen_thread.start()
+
+    def listen(self):
+        print("Socket is now waiting for message")
+        while True:
+            client_text = self.c.recv(1024)
+            if (client_text != b''):
+                # updates the client message
+                self.client_msg = client_text
+
+
+
+'''
 # next create a socket object
 s = socket.socket()
 print("Socket successfully created")
@@ -38,3 +80,4 @@ while True:
 
 # Close the connection with the client
 c.close()
+'''
