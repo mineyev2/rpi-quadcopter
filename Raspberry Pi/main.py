@@ -8,7 +8,7 @@ def message_to_motor_speeds(msg):
         return
     for i in msg:
         if(i ==49):
-            speeds.append(1)
+            speeds.append(30)
         else:
             speeds.append(0)
     print(speeds)
@@ -35,6 +35,7 @@ if __name__ == "__main__":
         client_msg = server.client_msg
         if(previous_msg != client_msg):
             speeds = message_to_motor_speeds(client_msg)
+            motors.set_motor_speeds(speeds)
             previous_msg = client_msg
 
 
