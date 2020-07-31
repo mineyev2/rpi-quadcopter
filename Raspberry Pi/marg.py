@@ -67,6 +67,16 @@ class MARG:
         convert quaternions to angle
         :return: euler angles in a list (?)
         '''
-        return
+
+        angles = Quaternion(self.Q).to_angles()
+
+        return (angles)
+
     def to_DCM(self):
-        return
+        '''
+        convert quaternions to DCM (I have no idea what DCM means as of now)
+        :return:
+        '''
+
+        DCM = Quaternion(self.Q).to_DCM()
+        return (DCM)

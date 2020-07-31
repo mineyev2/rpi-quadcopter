@@ -46,6 +46,10 @@ class Motors:
 
 
     def turn_off(self):
+        '''
+        turns off the motors
+        :return: nothing
+        '''
         for i in self.motor_gpios:
             self.pi.set_servo_pulsewidth(i, 0)
 
