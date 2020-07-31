@@ -11,8 +11,8 @@ import adafruit_fxas21002c
 import threading
 
 '''
-Class for reading the sensor and reading sensor values. Needs one of the functions to update in parallel eventually
-The sensor we are using here is the "Adafruit Precision NXP 9-DOF Breakout Board - FXOS8700 + FXAS21002"
+Class for reading 9-dof sensor values
+The sensor we are using is the "Adafruit Precision NXP 9-DOF Breakout Board - FXOS8700 + FXAS21002"
 '''
 class MARG:
     def __init__(self):
