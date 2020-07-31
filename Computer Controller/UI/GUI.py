@@ -13,6 +13,8 @@ class QuadUI:
         self.angles = (0, 0, 0)
         self.motors = (0, 0, 0, 0)
         self.battery = 1
+        self.connected = False
+        self.strength = 1
 
         #window initialization
         (self.width, self.height) = (1280, 720)
@@ -29,15 +31,21 @@ class QuadUI:
         self.motors = (m1, m2, m3, m4)
 
     #widget displays
-    def display_data(self, angles, motors):
+    def display_data(self, angles, motors, connected):
         #use font
         font = pygame.font.Font('Assets/Anonymous_Pro.ttf', 18)
 
         #display data
         text_angles = font.render('Angles: ' + str(angles), True, self.white)
         text_motors = font.render('Motors: ' + str(motors), True, self.white)
+        text_connecting = font.render('Connecting...', True, self.white)
         self.screen.blit(text_angles, (self.width/40, 20*self.height/22))
         self.screen.blit(text_motors, (self.width/40, 21*self.height/22))
+        self.screen.blit(text_connecting, (self.width/40, self.height/22))
+
+        if (connected):
+            text_connected = font.render('Connected!', True, self.white)
+            self.screen.blit(text_connected, (self.width/40, self.height/11))
 
     def display_crosshairs(self):
         pygame.draw.line(self.screen, self.white, (self.width/2, self.height/2-50), (self.width/2, self.height/2+50), 5)
@@ -64,21 +72,29 @@ class QuadUI:
         #initialize background
         BackGround = Background(self.live, [0,0])
 
+        #fake data
+        iters = 0
+        pings = randrange(1000)
+
         #program loop
         running = True
         while running:
             #load BG
             self.screen.blit(BackGround.image, BackGround.rect)
 
-            #widgets
+            #fake placeholder data
             self.angles = (randrange(360), randrange(360), randrange(360))
             self.motors = (uniform(0, 1), uniform(0, 1), uniform(0, 1))
             self.battery = self.battery - uniform(0, 0.1)
             if self.battery < 0:
                 self.battery = 1
+            iters = iters+1
+            if (iters > pings):
+                self.connected = True
+            
 
             #display widgets
-            self.display_data(self.angles, self.motors)
+            self.display_data(self.angles, self.motors, self.connected)
             self.display_crosshairs()
             self.display_battery(self.battery)
 
