@@ -29,7 +29,6 @@ class Server:
         print('Got connection from', self.addr)
 
     def listen_in_parallel(self):
-        print("test")
         listen_thread = threading.Thread(target=self.listen)
         listen_thread.start()
 
