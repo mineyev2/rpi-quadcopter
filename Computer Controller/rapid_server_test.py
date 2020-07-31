@@ -5,7 +5,7 @@ from PIL import Image
 import matplotlib.pyplot as pl
 
 server_socket = socket.socket()
-server_socket.bind(('192.168.4.11', 7000))  # ADD IP HERE
+server_socket.bind(('192.168.1.78', 7000))  # ADD IP HERE
 server_socket.listen(0)
 
 # Accept a single connection and make a file-like object out of it
@@ -32,7 +32,7 @@ try:
         else:
             img.set_data(image)
 
-        pl.pause(0.01)
+        pl.pause(0.001)
         pl.draw()
 
         print('Image is %dx%d' % image.size)
