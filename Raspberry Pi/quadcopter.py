@@ -25,5 +25,17 @@ class Quadcopter:
             • 2: update sensitivity of motors (values are from 1-10)
         '''
         #TODO: figure out key and sending scheme and header size and message sizes
-
-        return
+        
+        if(self.server.client_msg[:1] == 01)
+            {
+            status = motor_command(self.server.client_msg[2:])
+                return status
+        }
+        if(self.server.client_msg[:1] == 02)
+            {
+            status = sens_update(self.server.client_msg[2:])
+                return status
+        }
+        else{
+            return
+        }
