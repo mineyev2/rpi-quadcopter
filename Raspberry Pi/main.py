@@ -1,3 +1,5 @@
+from quadcopter imoprt Quadcopter
+from marg import MARG
 from server_test import Server
 from motors import Motors
 import pygame
@@ -8,13 +10,25 @@ def message_to_motor_speeds(msg):
         return
     for i in msg:
         if(i ==49):
-            speeds.append(30)
+            speeds.append(10)
         else:
             speeds.append(0)
     print(speeds)
     return speeds
 
 if __name__ == "__main__":
+
+    rpi_quadcopter = Quadcopter()
+    rpi_quadcopter.server.start_server()
+    rpi_quadcopter.server.accept_connections()
+    rpi_quadcopter.server.listen_in_parallel()
+
+    initialzed = False
+    while not initialzed:
+        if(rpi_quadcopter.server.client_msg == b'00000000000000'):
+            initialzed = True
+
+    '''
     server = Server()
     # eventually just run Quadcopter class and it will create a server and motors inside its init(?)
     motors = Motors()
@@ -45,3 +59,4 @@ if __name__ == "__main__":
 
             #reads when the message changes, might not be a good idea but we'll stick w that for now
             print(server.client_msg)
+    '''

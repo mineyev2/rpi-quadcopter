@@ -24,8 +24,14 @@ if __name__ == "__main__":
 
     mac_controller = Controller()
 
-    buttons = mac_controller.get_buttons()
-    print(buttons)
+    initialized = False
+    while not initialized:
+        buttons = mac_controller.get_buttons()
+        if(buttons[4] == 1):
+            print("Initializing...")
+            client.send_msg(b'00000000000000')
+            initialized = True
+
     while not done:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
