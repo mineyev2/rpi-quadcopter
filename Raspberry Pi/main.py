@@ -28,6 +28,10 @@ if __name__ == "__main__":
         if(rpi_quadcopter.server.client_msg == b'00000000000000'):
             initialzed = True
 
+    rpi_quadcopter.motors.initialize()
+
+    
+
     '''
     server = Server()
     # eventually just run Quadcopter class and it will create a server and motors inside its init(?)
