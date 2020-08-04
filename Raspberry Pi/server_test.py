@@ -11,7 +11,6 @@ class Server:
         self.port = 12344
         self.s = socket.socket()
         self.client_msg = b''
-        self.prev_msg = b''
         self.new_msg = True
 
     def start_server(self):
@@ -36,17 +35,8 @@ class Server:
         listen_thread.start()
 
     def listen(self):
-
         #change this later so that the messages aren't combined (specify message size)
         print("Socket is now waiting for message")
         while True:
-            client_text = self.c.recv(self.msg_size)
-            if (client_text != b''):
-                # updates the client message
-                self.client_msg = client_text
-                if(self.prev_msg != self.client_msg):
-                    self.prev_msg = self.client_msg
-                    self.new_msg = True
-                else:
-                    self.new_msg = False
+            self.client_msg = self.c.recv(self.msg_size)
 
