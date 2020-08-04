@@ -1,7 +1,7 @@
-from quadcopter imoprt Quadcopter
-from marg import MARG
+from quadcopter import Quadcopter
+#from marg import MARG
 from server_test import Server
-from motors import Motors
+#from motors import Motors
 import pygame
 
 def message_to_motor_speeds(msg):
@@ -23,14 +23,15 @@ if __name__ == "__main__":
     rpi_quadcopter.server.accept_connections()
     rpi_quadcopter.server.listen_in_parallel()
 
-    initialzed = False
-    while not initialzed:
+    initialized = False
+    while not initialized:
         if(rpi_quadcopter.server.client_msg == b'00000000000000'):
-            initialzed = True
+            initialized = True
+    print("Initializing motors...")
+    #rpi_quadcopter.motors.initialize()
 
-    rpi_quadcopter.motors.initialize()
-
-    
+    while True:
+        rpi_quadcopter.decipher_msg()
 
     '''
     server = Server()

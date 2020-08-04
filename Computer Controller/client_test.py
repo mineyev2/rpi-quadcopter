@@ -2,10 +2,11 @@
 import socket
 
 class Client:
-    def __init__(self, name='Roman', ip='192.168.1.159'):
+    #192.168.1.159
+    def __init__(self, name='Roman', ip='10.126.24.189'):
         self.name = name
         self.ip = ip
-        self.port = 12346
+        self.port = 12344
 
         self.s = socket.socket()
 

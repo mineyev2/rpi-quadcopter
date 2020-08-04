@@ -1,5 +1,5 @@
-from motors import Motors
-from marg import MARG
+#from motors import Motors
+#from marg import MARG
 from server_test import Server
 
 '''
@@ -7,8 +7,8 @@ This Quadcopter class will combine all the code running on the pi into one so ev
 '''
 class Quadcopter:
     def __init__(self):
-        self.motors = Motors()
-        self.marg = MARG()
+        #self.motors = Motors()
+        #self.marg = MARG()
         # not sure if I want this here, but will add for now
         self.server = Server()
 
@@ -24,19 +24,26 @@ class Quadcopter:
             • 1: send data to motor
             • 2: update sensitivity of motors (values are from 1-10)
         '''
-        #TODO: figure out key and sending scheme and header size and message sizes
-        
-        if(self.server.client_msg[:1] == b'01'):
-            status = self.motor_command(self.server.client_msg[2:])
-            return status
-        elif(self.server.client_msg[:1] == b'02'):
-            status = self.sensitivity_update(self.server.client_msg[2:])
-            return status
-        else:
-            return
+        #TODO: set it so same messages don't get repeated
+
+        if(self.server.new_msg):
+            #print(self.server.client_msg[:1])
+            if(self.server.client_msg[:2] == b'01'):
+                status = self.motor_command(self.server.client_msg[2:])
+                return status
+            elif(self.server.client_msg[:2] == b'02'):
+                status = self.sensitivity_update(self.server.client_msg[2:])
+                return status
+            else:
+                print("invalid message")
+                return
+            # once the message is read, set it so that it doesn't get read again
+            #self.server.new_msg = False
 
     def motor_command(self, joystick_readings):
+        print("running motor command:", joystick_readings)
         return
 
     def sensitivity_update(self, sensitivity_value):
+        print("running sensitivity update: ", sensitivity_value)
         return
