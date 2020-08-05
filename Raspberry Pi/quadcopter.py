@@ -14,20 +14,20 @@ class Quadcopter:
 
         self.prev_msg = b''
 
+
     def decipher_msg(self):
         '''
-        runs certain functions depending on message type
+        In charge of all the messages sent to the quadcopter
         :return:
         '''
 
         '''
         If message starts with:
-            • 0: idk
-            • 1: send data to motor
-            • 2: update sensitivity of motors (values are from 1-10)
+            • 01: send data to motor
+            • 02: update sensitivity of motors (values are from 1-10)
+            • blank message: do nothing
+            • else: print "message is invalid"
         '''
-        #TODO: set it so same messages don't get repeated
-
         if(self.prev_msg != self.server.client_msg):
             self.prev_msg = self.server.client_msg
 
@@ -42,10 +42,16 @@ class Quadcopter:
             else:
                 print("invalid message")
                 return
-        # once the message is read, set it so that it doesn't get read again
-        #self.server.new_msg = False
 
     def motor_command(self, joystick_readings):
+        '''
+        Convert the joystick readings to specific speed updates for each motor
+        :param joystick_readings:
+        :return:
+        '''
+
+        #dont forget each joystick reading is incremented by 100
+
         print("running motor command:", joystick_readings)
         return
 
