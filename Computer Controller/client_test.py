@@ -3,7 +3,7 @@ import socket
 
 class Client:
     #192.168.1.159
-    def __init__(self, name='Roman', ip='10.126.24.189'):
+    def __init__(self, name='Roman', ip='192.168.1.159'):
         self.name = name
         self.ip = ip
         self.port = 12344

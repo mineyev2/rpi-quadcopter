@@ -1,5 +1,5 @@
 from quadcopter import Quadcopter
-#from marg import MARG
+from marg import MARG
 from server_test import Server
 from motors import Motors
 import pygame
