@@ -4,15 +4,13 @@ import time
 from controller import Controller
 from client_test import Client
 
-
 if __name__ == "__main__":
 
     client = Client()
     client.connect()
     time.sleep(1)
 
-
-    #client.send_msg(b'connected')
+    # client.send_msg(b'connected')
 
     pygame.init()
     pygame.joystick.init()
@@ -30,13 +28,12 @@ if __name__ == "__main__":
                 done = True
 
         buttons = mac_controller.get_buttons()
-        if(buttons[4] == 1):
+        if (buttons[4] == 1):
             print("Initializing...")
             client.send_msg(b'100')
             initialized = True
         clock.tick(30)
 
-    
     while not done:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
