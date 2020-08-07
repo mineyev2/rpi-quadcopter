@@ -54,7 +54,7 @@ class Quadcopter:
 
         speeds = []
         for i in range(4):
-            speeds += int(joystick_readings[(i * 3):(i * 3) + 4])
+            speeds.append(int(joystick_readings[(i * 3):(i * 3) + 4]))
 
         print("running motor command:", speeds)
         return
