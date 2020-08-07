@@ -1,5 +1,5 @@
 from motors import Motors
-from marg import MARG
+#from marg import MARG
 from server_test import Server
 
 '''
@@ -8,7 +8,7 @@ This Quadcopter class will combine all the code running on the pi into one so ev
 class Quadcopter:
     def __init__(self):
         self.motors = Motors()
-        self.marg = MARG()
+        #self.marg = MARG()
         # not sure if I want this here, but will add for now
         self.server = Server()
 
