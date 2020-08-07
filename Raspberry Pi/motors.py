@@ -40,9 +40,12 @@ class Motors:
         for i in range(self.num_motors):
             #convert from percentage to signal PWM
             # 1000 is min thrust, 2000 is max thrust
-            pulse_width = 1000 + int(speeds[i] * 10)
-            assert(pulse_width <= 2000), "pulse width is too large!"
-            self.pi.set_servo_pulsewidth(self.motor_gpios[i], pulse_width)
+            if(speeds[i] != 0):
+                pulse_width = 1000 + int(speeds[i] * 10)
+                assert(pulse_width <= 2000), "pulse width is too large!"
+                self.pi.set_servo_pulsewidth(self.motor_gpios[i], pulse_width)
+            else:
+                self.pi.set_servo_pulsewidth(self.motor_gpios[i], 0)
 
 
     def turn_off(self):

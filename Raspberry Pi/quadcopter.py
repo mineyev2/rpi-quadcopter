@@ -58,8 +58,8 @@ class Quadcopter:
 
         to_set = [0, 0, 0, 0]
         for i in range(4):
-            if(speeds[1] > 0):
-                to_set[i] = int(speeds[1])
+            if(speeds[1] < 0):
+                to_set[i] = -int(speeds[1])
             else:
                 to_set[i] = 0
         print("speed settings: ", to_set)
