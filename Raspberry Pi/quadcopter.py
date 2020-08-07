@@ -54,9 +54,18 @@ class Quadcopter:
 
         speeds = []
         for i in range(4):
-            speeds.append(int(joystick_readings[(i * 3):(i * 3) + 3]))
+            speeds.append(int(joystick_readings[(i * 3):(i * 3) + 3]) - 100)
 
-        print("running motor command:", speeds)
+        to_set = [0, 0, 0, 0]
+        for i in range(4):
+            if(speeds[1] > 0):
+                to_set[i] = int(speeds[1])
+            else:
+                to_set[i] = 0
+        print("speed settings: ", to_set)
+        self.motors.set_speeds(to_set)
+
+        print("running motor command: ", speeds)
         return
 
     def sensitivity_update(self, sensitivity_value):

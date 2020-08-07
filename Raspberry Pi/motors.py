@@ -3,7 +3,7 @@ import time
 
 class Motors:
     def __init__(self):
-        self.motor_gpios = [17, 27, 22]
+        self.motor_gpios = [17, 27, 22, 23]
         self.num_motors = len(self.motor_gpios)
         self.sensitivity = 1
         self.pi = pigpio.pi()
