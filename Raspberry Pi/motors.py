@@ -19,7 +19,7 @@ class Motors:
 
         for i in self.motor_gpios:
             self.pi.set_servo_pulsewidth(i, 1000)
-        time.sleep(3)
+        time.sleep(10)
         for i in self.motor_gpios:
             self.pi.set_servo_pulsewidth(i, 0)
         print("Motors initialized!")
