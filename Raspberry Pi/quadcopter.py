@@ -57,10 +57,12 @@ class Quadcopter:
             speeds.append(int(joystick_readings[(i * 3):(i * 3) + 3]) - 100)
 
         to_set = [0, 0, 0, 0]
-        for i in range(4):
-            if(speeds[1] < 0):
+
+        if(speeds[1] < 0):
+            for i in range(4):
                 to_set[i] = -int(speeds[1])
-            else:
+        else:
+            for i in range(4):
                 to_set[i] = 0
         print("speed settings: ", to_set)
         self.motors.set_speeds(to_set)

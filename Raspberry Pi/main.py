@@ -33,7 +33,7 @@ if __name__ == "__main__":
     print("Initializing motors...")
 
     # initialize the ESC's so that they can fly
-    #rpi_quadcopter.motors.initialize()
+    rpi_quadcopter.motors.initialize()
 
     while True:
         rpi_quadcopter.decipher_msg()
