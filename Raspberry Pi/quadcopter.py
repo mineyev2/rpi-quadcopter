@@ -52,7 +52,11 @@ class Quadcopter:
 
         #dont forget each joystick reading is incremented by 100
 
-        print("running motor command:", joystick_readings)
+        speeds = []
+        for i in range(4):
+            speeds += int(joystick_readings[(i * 3):(i * 3) + 4])
+
+        print("running motor command:", speeds)
         return
 
     def sensitivity_update(self, sensitivity_value):
