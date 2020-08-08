@@ -32,7 +32,8 @@ class Motors:
         for i in self.motor_gpios:
             self.pi.set_servo_pulsewidth(i, 1000)
         time.sleep(5)
-
+        self.turn_off()
+        time.sleep(5)
         for i in self.motor_gpios:
             self.pi.set_servo_pulsewidth(i, 1300)
         time.sleep(2)
