@@ -31,11 +31,11 @@ class Motors:
             self.pi.set_servo_pulsewidth(i, 0)
         time.sleep(1)
         for i in self.motor_gpios:
-            self.pi.set_servo_pulsewidth(i, 2000)
+            self.pi.set_servo_pulsewidth(i, 1200)
         print("Max throttle...")
         time.sleep(1)
         for i in self.motor_gpios:
-            self.pi.set_servo_pulsewidth(i, 700)
+            self.pi.set_servo_pulsewidth(i, 0)
         time.sleep(1)
         print("Arm end...")
         for i in self.motor_gpios:
