@@ -52,6 +52,6 @@ if __name__ == "__main__":
         for i in range(4):
             to_send += str(buttons[11 + i]).encode('utf-8')
         # print(to_send)
-        client.send_msg(to_send + str(buttons[4]).encode('utf-8'))
+        client.send_msg(to_send)
 
         clock.tick(30)
