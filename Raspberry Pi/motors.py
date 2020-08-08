@@ -27,8 +27,8 @@ class Motors:
 
         # sequence of PWMs required for BLHeli firmware to "unlock" the ESCs
         for i in self.motor_gpios:
-            self.pi.set_servo_pulsewidth(i, 1000)
-            print("escs set to 1000")
+            self.pi.set_servo_pulsewidth(i, 1200)
+            print("escs set to 1200")
         time.sleep(5)
         for i in self.motor_gpios:
             self.pi.set_servo_pulsewidth(i, 1300)
