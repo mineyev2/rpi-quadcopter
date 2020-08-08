@@ -37,7 +37,7 @@ class Motors:
                 self.pi.set_servo_pulsewidth(j, 1300 - ((i + 1) * 3))
             time.sleep(0.01)
         print("Arm end...")
-        time.sleep(5)
+        time.sleep(10)
 
         '''
         for i in self.motor_gpios:
