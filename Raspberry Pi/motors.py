@@ -30,7 +30,7 @@ class Motors:
         for i in range(100):
             for j in self.motor_gpios:
                 self.pi.set_servo_pulsewidth(j, 1000 + (i * 3))
-            time.sleep(0.01)
+            time.sleep(0.03)
         print("Max throttle...")
         for i in range(100):
             for j in self.motor_gpios:
