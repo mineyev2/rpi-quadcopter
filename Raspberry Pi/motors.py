@@ -26,6 +26,9 @@ class Motors:
         print("Initializing motors...")
 
         # sequence of PWMs required for BLHeli firmware to "unlock" the ESCs
+        # turning off once just in case
+        self.turn_off()
+        time.sleep(3)
         for i in self.motor_gpios:
             self.pi.set_servo_pulsewidth(i, 1000)
         time.sleep(5)
@@ -37,7 +40,7 @@ class Motors:
             self.pi.set_servo_pulsewidth(i, 1000)
         time.sleep(5)
         '''
-        self.turn_off()
+        #self.turn_off()
         print("Motors initialized!")
 
         #listen for beeping to guarantee that the ESCs have initialized
