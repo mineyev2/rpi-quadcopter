@@ -26,10 +26,11 @@ class Motors:
         print("Initializing motors...")
 
         # sequence of PWMs required for BLHeli firmware to "unlock" the ESCs
-        print("Arm start...")
+
         for i in self.motor_gpios:
             self.pi.set_servo_pulsewidth(i, 0)
         time.sleep(1)
+        print("Arm start...")
         for i in self.motor_gpios:
             self.pi.set_servo_pulsewidth(i, 1200)
         print("Max throttle...")
@@ -39,7 +40,7 @@ class Motors:
         time.sleep(1)
         print("Arm end...")
         for i in self.motor_gpios:
-            self.pi.set_servo_pulsewidth(i, 1000)
+            self.pi.set_servo_pulsewidth(i, 1200)
 
         time.sleep(1)
         '''
