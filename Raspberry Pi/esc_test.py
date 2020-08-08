@@ -13,6 +13,7 @@ def message_to_motor_speeds(msg):
             speeds.append(10)
         else:
             speeds.append(0)
+    speeds.append(0)
     print(speeds)
     return speeds
 
