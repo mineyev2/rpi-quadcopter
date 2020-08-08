@@ -6,14 +6,15 @@ import pygame
 
 def message_to_motor_speeds(msg):
     speeds = []
-    if(len(msg) != 3):
+
+
+    if(len(msg) != 4):
         return
     for i in msg:
         if(i ==49):
             speeds.append(10)
         else:
             speeds.append(0)
-    speeds.append(0)
     print(speeds)
     return speeds
 
@@ -34,7 +35,7 @@ if __name__ == "__main__":
     # now here, decipher whatever the client sends so that the pi can run the motors
     initialized = False
     while not initialized:
-        if(server.client_msg == b'100'):
+        if(server.client_msg == b'1000'):
             initialized = True
 
     motors.initialize()
@@ -44,6 +45,8 @@ if __name__ == "__main__":
         client_msg = server.client_msg
         if(previous_msg != client_msg):
             speeds = message_to_motor_speeds(client_msg)
+            if(speeds[3] == 10):
+                motors.turn_off()
             if(speeds):
                 motors.set_speeds(speeds)
             previous_msg = client_msg

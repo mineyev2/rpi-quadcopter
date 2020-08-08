@@ -30,7 +30,7 @@ if __name__ == "__main__":
         buttons = mac_controller.get_buttons()
         if (buttons[4] == 1):
             print("Initializing...")
-            client.send_msg(b'100')
+            client.send_msg(b'1000')
             initialized = True
         clock.tick(30)
 
@@ -46,10 +46,12 @@ if __name__ == "__main__":
         X = buttons[13]
         # Y = buttons[14]
 
+        start = buttons[4]
+
         to_send = b''
         for i in range(3):
             to_send += str(buttons[11 + i]).encode('utf-8')
         # print(to_send)
-        client.send_msg(to_send)
+        client.send_msg(to_send + str(buttons[4]).encode('utf-8'))
 
         clock.tick(30)
