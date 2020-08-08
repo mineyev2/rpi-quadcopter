@@ -38,15 +38,7 @@ class Motors:
             self.pi.set_servo_pulsewidth(i, 1200)
         print("Max throttle...")
         for i in self.motor_gpios:
-            self.pi.set_servo_pulsewidth(i, 1000)
-        time.sleep(1)
-        for i in self.motor_gpios:
-            self.pi.set_servo_pulsewidth(i, 0)
-        time.sleep(1)
-        print("Arm end...")
-        for i in self.motor_gpios:
-            self.pi.set_servo_pulsewidth(i, 1200)
-
+            self.pi.set_servo_pulsewidth(i, 900)
         time.sleep(1)
         '''
         print("Arm start...")
