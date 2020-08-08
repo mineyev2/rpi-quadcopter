@@ -23,6 +23,8 @@ if __name__ == "__main__":
     server = Server()
     # eventually just run Quadcopter class and it will create a server and motors inside its init(?)
     motors = Motors()
+    motors.turn_off()
+
     server.start_server()
     server.accept_connections()
     server.listen_in_parallel()
