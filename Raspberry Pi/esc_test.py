@@ -23,6 +23,7 @@ if __name__ == "__main__":
     server = Server()
     # eventually just run Quadcopter class and it will create a server and motors inside its init(?)
     motors = Motors()
+    # set motor ESC PPMs to 0 so that the motors will not move no matter what
     motors.turn_off()
 
     server.start_server()
