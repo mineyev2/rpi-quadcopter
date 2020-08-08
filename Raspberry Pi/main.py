@@ -20,6 +20,7 @@ if __name__ == "__main__":
 
     # quadcopter class allows to access all data of the quadcopter
     rpi_quadcopter = Quadcopter()
+    rpi_quadcopter.motors.turn_off()
     rpi_quadcopter.server.start_server()
     rpi_quadcopter.server.accept_connections()
     rpi_quadcopter.server.listen_in_parallel()
