@@ -32,6 +32,9 @@ class Motors:
         time.sleep(1)
         print("Arm start...")
         for i in self.motor_gpios:
+            self.pi.set_servo_pulsewidth(i, 1000)
+        time.sleep(1)
+        for i in self.motor_gpios:
             self.pi.set_servo_pulsewidth(i, 1200)
         print("Max throttle...")
         time.sleep(1)
